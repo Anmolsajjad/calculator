@@ -1,26 +1,26 @@
 <?php
 if(isset($_REQUEST['submit'])) {
-  $ans = $_REQUEST['ans'];
-  if(!empty($ans)) {
-    $ans = calculate($ans);
+  $answer = $_REQUEST['ans'];
+  if(!empty($answer)) {
+    $answer = calculate($answer);
   }
 }
 
-function calculate($ans) {
+function calculate($answer) {
   $operator = '+';
-  $pos = stripos($ans, '+');
-  if($pos === true) $operator = '+';
-  if($pos === false) {
-    $pos = stripos($ans, '-');
+  $position = stripos($answer, '+');
+  if($position === true) $operator = '+';
+  if($position === false) {
+    $position = stripos($answer, '-');
     $operator = '-';
   }
-  if($pos === false) {
-    $pos = stripos($ans, '*');
+  if($position === false) {
+    $position = stripos($answer, '*');
     $operator = '*';
   }
 
-  if($pos !== false) {
-    $tokens = explode($operator, $ans);
+  if($position !== false) {
+    $tokens = explode($operator, $answer);
     switch($operator) {
       case '+':
         return $tokens[0] + $tokens[1];
@@ -68,7 +68,7 @@ function calculate($ans) {
 
       <br>
       <label for="ans">solution</label>
-      <input type="textfeild" name="ans" value="<?php echo isset($ans)?$ans:''?>">
+      <input type="textfeild" name="ans" value="<?php echo isset($answer)?$answer:''?>">
     </form>
     <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
   </body>
